@@ -90,7 +90,12 @@ export class PluralizePipe implements PipeTransform {
   readonly uncountable: Set<string> = new Set(this.data.uncountable);
 
   transform(word: string, count: number) {
+    // if no modification is needed, return the word as-is
     if (this.uncountable.has(word.toLowerCase())) return word;
+
+    for (const [key, value] of Object.entries(this.irregular)) {
+      if (word.toLowerCase() === key) return value;
+    }
 
     const pattern = new RegExp(`${word}$`, 'i');
     const replacement = this.plural[word];

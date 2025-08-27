@@ -1,2 +1,2 @@
-# Angular pipes
-A collection of pipes to use in Angular templates
+# Pipe Pack
+Just a collection of pipes I use in Angular projects.
